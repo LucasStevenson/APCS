@@ -24,7 +24,6 @@ class Nim {
         int rand = (int)Math.floor(Math.random() * 2);
         String whosTurn;
         boolean torf;
-        String winner;
         String showSticks = new String(new char[26]).replace("\0", "|");
 
         System.out.println("\n" + showSticks.replace("", " ").trim() + "\t(26) sticks remaining\n");
