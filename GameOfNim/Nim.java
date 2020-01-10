@@ -13,7 +13,7 @@ class Nim {
     // IM PRETTY SURE THERE IS A BETTER WAY OF DOING THIS...BUT OH WELL
     private static int numSticks = 26;
     private static int numDraws = 3;
-    public static Scanner input = new Scanner(System.in);;
+    public static Scanner input = new Scanner(System.in);
     public static String player1;
     public static String whosTurn;
     public static boolean torf;
@@ -21,9 +21,9 @@ class Nim {
 
     public static void twoPlayer() {
         System.out.print("Enter player1's name: ");
-        String player1 = input.next();
+        String player1 = input.nextLine();
         System.out.print("Enter player2's name: ");
-        String player2 = input.next();
+        String player2 = input.nextLine();
 
         // pick a random person to go first
         int rand = (int)Math.floor(Math.random() * 2);
@@ -41,9 +41,15 @@ class Nim {
             whosTurn = torf ? player1 : player2;
             torf = !torf;
             System.out.print(whosTurn + "'s turn: ");
+            input = new Scanner(System.in);
+            if (!input.hasNextInt()) {
+                System.out.println("Int only pls\n");
+                torf = !torf;
+                continue;
+            }
             int guess = input.nextInt();
             if (guess > numDraws || guess < 1) {
-                System.out.println(numDraws + " is the max and 1 is the min");
+                System.out.println(numDraws + " is the max and 1 is the min\n");
                 torf = !torf; // i dont want them to lose their turn
             } else {
                 numSticks -= guess;
@@ -61,7 +67,7 @@ class Nim {
     public static void singlePlayer() {
         // this is almost the exact same as two player except computer does basic math and wins
         System.out.print("Enter your name: ");
-        String player1 = input.next();
+        String player1 = input.nextLine();
         torf = true;
 
         System.out.println("\n" + showSticks.replace("", " ").trim() + "\t(26)\n");
@@ -77,10 +83,16 @@ class Nim {
                 System.out.print(whosTurn + "'s turn: " + guess + "\n");
             } else {
                 System.out.print(whosTurn + "'s turn: ");
+                input = new Scanner(System.in);
+                if (!input.hasNextInt()) {
+                    System.out.println("Int only pls\n");
+                    torf = !torf;
+                    continue;
+                }
                 guess = input.nextInt();
             }
             if (guess > 3 || guess < 1) {
-                System.out.println("3 is the max and 1 is the min");
+                System.out.println("3 is the max and 1 is the min\n");
                 torf = !torf; // i dont want them to lose their turn
             } else {
                 numSticks -= guess;
