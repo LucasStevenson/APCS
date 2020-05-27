@@ -1,10 +1,9 @@
 import java.util.*;
-
 /*
 
 Nim is an ancient game that is thought to have originated in China. The game
 is played by two players. The game begins when 26 sticks are placed on a table.
-The players take turns taking 1, 2, or 3 sticks per turn. The person that 
+The players take turns taking 1, 2, or 3 sticks per turn. The person that
 takes the last stick wins.
 
 */
@@ -77,7 +76,7 @@ class Nim {
         while (numSticks > 0) {
             whosTurn = torf ? "Computer" : player1;
             torf = !torf;
-            
+
             if (whosTurn.equals("Computer")) {
                 guess = numSticks == 26 ? 2 : (4 - guess);
                 System.out.print(whosTurn + "'s turn: " + guess + "\n");

@@ -84,7 +84,7 @@ class Battleship {
   public static void gameLoop(int numGuesses) {
     int counter = 0;
     Scanner sc;
-    while (counter <= numGuesses) {
+    while (counter < numGuesses) {
       printMap(displayMap);
       System.out.print("Enter a coordinate to attack: ");
       sc = new Scanner(System.in);
@@ -99,7 +99,7 @@ class Battleship {
       int yCoord = Integer.parseInt(userInputArr[0].trim());
       int xCoord = Integer.parseInt(userInputArr[1].trim());
 
-      if (xCoord == 0 || yCoord == 0 || xCoord > displayMap.length || yCoord > displayMap.length) {
+      if (xCoord <= 0 || yCoord <= 0 || xCoord >= displayMap.length || yCoord >= displayMap.length) {
         System.out.println("You can't guess there!");
         continue;
       }
@@ -129,8 +129,9 @@ class Battleship {
     // Initializing the maps
     initMap(displayMap);
     initMap(gameMap);
+    
     setupGameMap();
 
-    gameLoop(20);
+    gameLoop(40);
   }
 }
